@@ -1,4 +1,5 @@
 require 'selenium-webdriver'
+require_relative '../utility/excelreader'
 class LoginPage
 
   USER_NAME        = { name: 'uid'     }
@@ -12,13 +13,11 @@ class LoginPage
 
   end
 
-  def visit
-    driver.get ENV['base_url']
-  end
+
 
   def login_site()
-    driver.find_element(USER_NAME).send_keys "mngr165114"
-    driver.find_element(PASSWORD).send_keys "AqYbAnY"
+    driver.find_element(USER_NAME).send_keys read_excel( "./Data/data1.xlsx", "Sheet1",2,2)
+    driver.find_element(PASSWORD).send_keys read_excel("./Data/data1.xlsx", "Sheet1",2,3)
     driver.find_element(LOGIN_BUTTON).click
   end
 

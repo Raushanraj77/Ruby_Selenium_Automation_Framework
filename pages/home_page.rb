@@ -11,11 +11,11 @@ class HomePage
 
   end
 
-
-
   def verify_heading()
     if driver.find_element(HOMEPAGE_HEADING).displayed?
-      puts "Successfully logged in"
+      return true
+    else
+      return false
     end
 
   end
